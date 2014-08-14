@@ -1,0 +1,32 @@
+.body{min-width: 900px;}
+.contenido{width: 100%;}
+.principal{ border-bottom: solid 0px #c0c0c0; padding: 20px 10px;
+            /*min-height:450px;height:expression(this.scrollHeight > 450 ? "auto":"450px");*/
+            height: 550px; vertical-align: top
+           }
+.lateral{width:250px; border-left: solid 1px #c0c0c0; border-bottom: solid 0px #c0c0c0;  vertical-align: top;background-color: #24466C;}
+.footer{background-color: #24466C; min-height: 50px; }
+
+
+/*.table thead th{background-color: #c3d9ff;}*/
+.table th a{color: #333;}
+.table tbody td {padding: 4px 5px!important}
+/*.table tbody tr:hover td{ background-color: #5bc0de!important}*/
+
+.panel-heading h4 {margin: 0px; padding-top: 5px}
+
+
+/*LATERAL ORIGINAL DE FASTCREDIT*/
+.toolwindow { background-color: #24466c; border: 2px solid #25476d; height: 100%;  }
+.tooltext {background-color: #b3ceff; border-radius: 10px; color: #24466c; font-weight: bold; height: 95%; width: 90%; padding:5px; 
+           margin: 0 auto; margin-top: 10px; padding-top: 15px;}
+.main {border-radius: 10px;  }
+.title { background-color: #c3d9ff; border-radius: 10px; font-weight: bold; margin: 0; padding: 0; text-align: center;}
+
+.tooltext input {line-height: normal; font-weight: normal;}
+
+/*JQUERI UI*/
+
+
+.ui-widget{font-size:1em!important; }
+.ui-tabs {padding: 0px!important;}
