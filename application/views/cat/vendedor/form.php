@@ -22,8 +22,6 @@ $(function() {
               <li><a href="#tabs-2">Direccion</a></li>
               <li><a href="#tabs-3">Contacto</a></li>
               <li><a href="#tabs-4">Ventas</a></li>
-              <li><a href="#tabs-5">Cobranza</a></li>
-              <li><a href="#tabs-6">Comisi&oacute;n</a></li>
             </ul>
             <div id="tabs-1">
                 <div class="form-group">
@@ -59,76 +57,7 @@ $(function() {
                       <?php echo form_input("vendedor[metas_ventas_mensuales]", $vendedor['metas_ventas_mensuales']," id='metas_ventas_mensuales' class='form-control'" )?>            
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="porcen_ventas" class="col-md-3 control-label">Porcentaje de ventas</label>
-                  <div class="col-md-1">
-                      <?php echo form_input("vendedor[porcen_ventas]", $vendedor['porcen_ventas']," id='porcen_ventas' class='form-control spinner_porcen'" )?>            
-                  </div>
-                  <div class="col-md-1" style="padding-top: 8px;"> % </div>
-                </div>
-                <div class="form-group">
-                  <label for="numero_operacion_ingresada" class="col-md-3 control-label">Numero de operacion ingresada</label>
-                  <div class="col-md-2">
-                      <?php echo form_input("vendedor[numero_operacion_ingresada]", $vendedor['numero_operacion_ingresada']," id='numero_operacion_ingresada' class='form-control'" )?>            
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="porcen_ventas_autorizadas" class="col-md-3 control-label">Porcentaje de ventas autorizadas</label>
-                  <div class="col-md-1">
-                      <?php echo form_input("vendedor[porcen_ventas_autorizadas]", $vendedor['porcen_ventas_autorizadas']," id='porcen_ventas_autorizadas' class='form-control spinner_porcen'" )?>            
-                  </div>
-                  <div class="col-md-1" style="padding-top: 8px;"> % </div>
-                </div>
-                <div class="form-group">
-                  <label for="porcen_ventas_rechazadas" class="col-md-3 control-label">Porcentaje de ventas rechazadas</label>
-                  <div class="col-md-1">
-                      <?php echo form_input("vendedor[porcen_ventas_rechazadas]", $vendedor['porcen_ventas_rechazadas']," id='porcen_ventas_rechazadas' class='form-control spinner_porcen'" )?>            
-                  </div>
-                  <div class="col-md-1" style="padding-top: 8px;"> % </div>
-                </div>
-            </div>
-            <div id="tabs-5">
-                <div class="form-group">
-                  <label for="cobranza_esperada_enel_mes" class="col-md-3 control-label">Cobranza esperada por mes</label>
-                  <div class="col-md-2">
-                      <?php echo form_input("vendedor[cobranza_esperada_enel_mes]", $vendedor['cobranza_esperada_enel_mes']," id='cobranza_esperada_enel_mes' class='form-control'" )?>            
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="cobranza_realizada" class="col-md-3 control-label">Cobranza realizada</label>
-                  <div class="col-md-2">
-                      <?php echo form_input("vendedor[cobranza_realizada]", $vendedor['cobranza_realizada']," id='cobranza_realizada' class='form-control'" )?>            
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="porcen_cobranza_realizada" class="col-md-3 control-label">Porcentaje de cobranza realizada</label>
-                  <div class="col-md-1">
-                      <?php echo form_input("vendedor[porcen_cobranza_realizada]", $vendedor['porcen_cobranza_realizada']," id='porcen_cobranza_realizada' class='form-control spinner_porcen'" )?>            
-                  </div>
-                  <div class="col-md-1" style="padding-top: 8px;"> % </div>
-                </div>
-            </div>
-            <div id="tabs-6">
-                <div class="form-group">
-                    <label for="periodo_pago_comision" class="col-md-3 control-label">periodo pago de comisi&oacute;n</label>
-                    <div class="col-md-2">
-                        <?php echo form_input("vendedor[periodo_pago_comision]", $vendedor['periodo_pago_comision']," id='periodo_pago_comision' class='form-control'" )?>            
-                    </div>
-                </div>                
-                <div class="form-group">
-                    <label for="porcen_comision" class="col-md-3 control-label">Porcentaje de comisi&oacute;n</label>
-                    <div class="col-md-1">
-                        <?php echo form_input("vendedor[porcen_comision]", $vendedor['porcen_comision']," id='porcen_comision' class='form-control spinner_porcen'" )?>            
-                    </div>
-                    <div class="col-md-1" style="padding-top: 8px;"> % </div>
-                </div>
-                <div class="form-group">
-                    <label for="comision_a_pagar" class="col-md-3 control-label">Comision a pagar</label>
-                    <div class="col-md-2">
-                        <?php echo form_input("vendedor[comision_a_pagar]", $vendedor['comision_a_pagar']," id='comision_a_pagar' class='form-control'" )?>            
-                    </div>
-                </div>
-            </div>
+             </div>
             
         </div>            
         

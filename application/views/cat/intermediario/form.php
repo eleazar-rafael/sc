@@ -21,6 +21,8 @@
     <div id="tabs">
         <ul>
           <li><a href="#tabs-1">Datos Generales</a></li>
+		  <li><a href="#tabs-2">Cobranza</a></li>
+          <li><a href="#tabs-3">Comisi&oacute;n</a></li>
         </ul>
         <div id="tabs-1">
             <div class="form-group">
@@ -68,8 +70,50 @@
                   <?php echo form_input("intermediario[contrato]",$intermediario['contrato'], " class='form-control' ") ?>
               </div>
             </div>
-        </div>       
-    </div>      
+        </div>
+		<div id="tabs-2">
+                <div class="form-group">
+                  <label for="cobranza_esperada_mes" class="col-md-3 control-label">Cobranza esperada por mes</label>
+                  <div class="col-md-2">
+                      <?php echo form_input("intermediario[cobranza_esperada_mes]", $intermediario['cobranza_esperada_mes']," id='cobranza_esperada_mes' class='form-control'" )?>            
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cobranza_realizada" class="col-md-3 control-label">Cobranza realizada</label>
+                  <div class="col-md-2">
+                      <?php echo form_input("intermediario[cobranza_realizada]", $intermediario['cobranza_realizada']," id='cobranza_realizada' class='form-control'" )?>            
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="porcen_cobranza_realizada" class="col-md-3 control-label">Porcentaje de cobranza realizada</label>
+                  <div class="col-md-1">
+                      <?php echo form_input("intermediario[porcen_cobranza_realizada]", $intermediario['porcen_cobranza_realizada']," id='porcen_cobranza_realizada' class='form-control spinner_porcen'" )?>            
+                  </div>
+                  <div class="col-md-1" style="padding-top: 8px;"> % </div>
+                </div>
+            </div>
+            <div id="tabs-3">
+                <div class="form-group">
+                    <label for="periodo_pago_comision" class="col-md-3 control-label">periodo pago de comisi&oacute;n</label>
+                    <div class="col-md-2">
+                        <?php echo form_input("intermediario[periodo_pago_comision]", $intermediario['periodo_pago_comision']," id='periodo_pago_comision' class='form-control'" )?>            
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <label for="porcen_comision" class="col-md-3 control-label">Porcentaje de comisi&oacute;n</label>
+                    <div class="col-md-1">
+                        <?php echo form_input("intermediario[porcen_comision]", $intermediario['porcen_comision']," id='porcen_comision' class='form-control spinner_porcen'" )?>            
+                    </div>
+                    <div class="col-md-1" style="padding-top: 8px;"> % </div>
+                </div>
+                <div class="form-group">
+                    <label for="comision_a_pagar" class="col-md-3 control-label">Comision a pagar</label>
+                    <div class="col-md-2">
+                        <?php echo form_input("intermediario[comision_a_pagar]", $intermediario['comision_a_pagar']," id='comision_a_pagar' class='form-control'" )?>            
+                    </div>
+                </div>	
+			</div>
+	</div>      
     <div class="form-group" style="margin-top: 15px;">
         <div class="col-md-offset-3 col-md-4"> 
           <button type="submit" id="btn_save" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button>                                        
@@ -77,7 +121,7 @@
         </div>
     </div>
     <?php echo form_close()?>
-  
+
 </div>
 
 

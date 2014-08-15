@@ -43,6 +43,10 @@
                 <?php $class_order = ($sort == 'financiamiento_comision')? strtolower($order): ""?>
                 <a href="<?php echo $sort_financiamiento_comision; ?>" class="<?php echo $class_order?>">Financiamiento Comisi&oacute;n</a>
             </th>
+			<th>
+                <?php $class_order = ($sort == 'tasa')? strtolower($order): ""?>
+                <a href="<?php echo $sort_financiamiento_comision; ?>" class="<?php echo $class_order?>">Tasa %</a>
+            </th>
             <th width="16" ></th>            
             <th width="16" ></th>
         </tr>            
@@ -58,7 +62,8 @@
             <td align="center"><input type="text" name="filter[comision_apertura]" value="<?php echo $filter['comision_apertura']?>" style="width:95%"></td>
             <td align="center"><input type="text" name="filter[porcen_comision_apertura]" value="<?php echo $filter['porcen_comision_apertura']?>" style="width:95%"></td>
             <td align="center"><input type="text" name="filter[financiamiento_comision]" value="<?php echo $filter['financiamiento_comision']?>" style="width:95%"></td>
-            <td colspan="2" align="center">
+            <td align="center"><input type="text" name="filter[tasa]" value="<?php echo $filter['tasa']?>" style="width:95%"></td>
+			<td colspan="2" align="center">
                 <button type="button"  class="btn btn-default btn-xs" onclick="filter()">
                     <span class="glyphicon glyphicon-search" title="Borrar Registro" ></span>
                 </button>
@@ -76,6 +81,7 @@
                 <td align="center"><?php echo $row['comision_apertura']?></td>
                 <td align="center"><?php echo $row['porcen_comision_apertura']?></td>
                 <td ><?php echo $row['financiamiento_comision']?></td>
+				<td ><?php echo $row['tasa']?></td>
                 <td><?php echo anchor("cat/producto/update/?id=".$row['id'], '<span class="glyphicon glyphicon-edit"></span>','title="Editar Registro" class="btn btn-primary btn-xs"') ?></td>                
                 <td><a href="javascript:;" onclick="borrar('<?php echo $row['id']?>');" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove" title="Borrar Registro" ></span></a></td>
             </tr>

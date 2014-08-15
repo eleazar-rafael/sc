@@ -70,6 +70,54 @@ $(function() {
                         %
                     </div>
                 </div>
+				<div class="form-group">
+                    <label for="tipo_seguro" class="col-md-3 control-label">Tipo de Seguro*</label>
+                    <div class="col-md-2">
+                        <?php echo form_dropdown("producto[tipo_seguro]", $cbo_tipo_seguro,$producto['tipo_seguro']," id='tipo_seguro' class='form-control' " )?>
+                    </div>
+                </div>
+                <?php $stfijo = ($producto['tipo_seguro'] <> 123)? "style='display:none;'" : ""?>
+                <div class="form-group tipo_seguro" <?php echo $stfijo?> id="tr_123">
+                    <label for="seguro_fijo" class="col-md-3 control-label">Seguro Fijo*</label>
+                    <div class="col-md-2">
+                        <?php echo form_input("producto[seguro_fijo]", $producto['seguro_fijo']," id='seguro_fijo' class='form-control spinner_moneda' " ) //maxlength='10'?> 
+                    </div>                   
+                </div>                
+                <?php $stporcen = ($producto['tipo_seguro'] <> 124)? "style='display:none;'" : ""?>
+                <div class="form-group tipo_seguro" <?php echo $stporcen?> id="tr_124">
+                    <label for="seguro_porcentaje" class="col-md-3 control-label">Porcentaje del Seguro* </label>
+                    <div class="col-md-1">
+                        <?php echo form_input("producto[seguro_porcentaje]", $producto['seguro_porcentaje']," id='seguro_porcentaje' class='form-control spinner_porcen' " ) //maxlength='10'?>
+                    </div>              
+                    <div class="col-md-1" style="padding-top: 8px">
+                        %
+                    </div>
+                </div>
+				
+				
+				<div class="form-group">
+                    <label for="tipo_otros_gastos" class="col-md-3 control-label">Otros Gastos*</label>
+                    <div class="col-md-2">
+                        <?php echo form_dropdown("producto[tipo_otros_gastos]", $cbo_tipo_seguro,$producto['tipo_otros_gastos']," id='tipo_otros_gastos' class='form-control' " )?>
+                    </div>
+                </div>
+                <?php $stfijo = ($producto['tipo_otros_gastos'] <> 125)? "style='display:none;'" : ""?>
+                <div class="form-group tipo_otros_gastos" <?php echo $stfijo?> id="tr_125">
+                    <label for="otros_gastos_fijo" class="col-md-3 control-label">Seguro Fijo*</label>
+                    <div class="col-md-2">
+                        <?php echo form_input("producto[otros_gastos_fijo]", $producto['otros_gastos_fijo']," id='otros_gastos_fijo' class='form-control spinner_moneda' " ) //maxlength='10'?> 
+                    </div>                   
+                </div>                
+                <?php $stporcen = ($producto['tipo_otros_gastos'] <> 126)? "style='display:none;'" : ""?>
+                <div class="form-group tipo_otros_gastos" <?php echo $stporcen?> id="tr_126">
+                    <label for="otros_gastos_porcentaje" class="col-md-3 control-label">Porcentaje del Seguro* </label>
+                    <div class="col-md-1">
+                        <?php echo form_input("producto[otros_gastos_porcentaje]", $producto['otros_gastos_porcentaje']," id='otros_gastos_porcentaje' class='form-control spinner_porcen' " ) //maxlength='10'?>
+                    </div>              
+                    <div class="col-md-1" style="padding-top: 8px">
+                        %
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="financiamiento_comision" class="col-md-3 control-label">Financiamiento de la comisi&oacute;n*</label>
                     <div class="col-md-2">

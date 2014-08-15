@@ -62,7 +62,13 @@ class producto extends Admin_Controller{
         $this->data['producto'] = $this->producto_model->get_data( $this->input->get('id') );         
         
         $tipo_comision = 6;
-        $this->data['cbo_tipo_comision'] = $this->catalogo_model->get_cbo_catalogo($tipo_comision, "-- Ninguna--");        
+        $this->data['cbo_tipo_comision'] = $this->catalogo_model->get_cbo_catalogo($tipo_comision, "-- Ninguna--");     
+		
+		$tipo_seguro = 7;
+		$this->data['cbo_tipo_seguro'] = $this->catalogo_model->get_cbo_catalogo($tipo_seguro, "-- Ninguna--");
+        
+		$tipo_seguro = 8;
+		$this->data['cbo_tipo_otros_gastos'] = $this->catalogo_model->get_cbo_catalogo($tipo_otros_gastos, "-- Ninguna--");
         
         $id = isset($this->data['producto']['id'])? (int)$this->data['producto']['id'] : 0;        
         if($id == 0){

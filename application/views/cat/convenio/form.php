@@ -131,7 +131,7 @@ $(function() {
                 
                 
                 <div class="form-group">
-                    <label for="cuenta_asignada_para_pago" class="col-md-3 control-label">Cuenta asignada para pago</label>
+                    <label for="cuenta_asignada_para_pago" class="col-md-3 control-label">Cuenta asignada para dep&oacute;sito de cobranza</label>
                     <div class="col-md-5">
                         <?php echo form_input("convenio[cuenta_asignada_para_pago]", $convenio['cuenta_asignada_para_pago']," id='cuenta_asignada_para_pago' class='form-control' " ); //?>
                     </div>
