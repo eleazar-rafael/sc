@@ -20,8 +20,7 @@ class canal extends Admin_Controller{
     public function index(){
         if($_POST['filter']) set_filter ($this->lista, $_POST['filter']);
         if($_GET['sort']) set_sort($this->lista, $_GET['sort'], $_GET['order']);
-        //set_page($this->lista,$page);
-        
+                
         $this->getlist();
     }
     
@@ -111,7 +110,7 @@ class canal extends Admin_Controller{
         }
     }
     
-    private function check_contacto($tabla="", $tabla_id=0){
+    /*private function check_contacto($tabla="", $tabla_id=0){
         $contacto = $this->input->post('contacto');        
         if($tabla_id > 0){
             foreach($contacto as $tipo_contacto =>$dato){
@@ -128,7 +127,7 @@ class canal extends Admin_Controller{
                 }                
             }
         }
-    }
+    }*/
     
     public function delete($page=0){        
         $resp = $this->canal_model->delete( $this->input->get('id') );

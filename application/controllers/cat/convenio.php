@@ -14,6 +14,7 @@ class convenio extends Admin_Controller{
         $this->load->model("direccion_model");
         $this->load->model("canal_model");
         $this->load->model("contacto_model");
+        
     }
     
     public function index(){
@@ -94,7 +95,7 @@ class convenio extends Admin_Controller{
         }
     }
     
-    private function check_contacto($tabla="", $tabla_id=0){
+    /*private function check_contacto($tabla="", $tabla_id=0){
         $contacto = $this->input->post('contacto');        
         if($tabla_id > 0){
             foreach($contacto as $tipo_contacto =>$dato){
@@ -111,7 +112,7 @@ class convenio extends Admin_Controller{
                 }                
             }
         }
-    }
+    }*/
     
     public function delete($page=0){        
         $resp = $this->convenio_model->delete( $this->input->get('id') );

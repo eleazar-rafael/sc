@@ -29,7 +29,7 @@ class fondeador extends Admin_Controller{
             $id = $this->fondeador_model->insert( $this->input->post('fondeador') );
             if( (int)$id > 0 ){
                 $this->check_direccion($id);
-                $this->check_contacto($id);
+                $this->check_contacto("cat_fondeador",$id);
                 $_SESSION['success'] = "Fondeador Agregado";
             }else
                 $_SESSION['error'] = "Error al Crear Fondeador";
@@ -45,7 +45,7 @@ class fondeador extends Admin_Controller{
             $fondeador = $this->input->post('fondeador');
             $this->fondeador_model->update($fondeador);
             $this->check_direccion($fondeador['id']);
-            $this->check_contacto($fondeador['id']);
+            $this->check_contacto("cat_fondeador",$fondeador['id']);
             $_SESSION['success'] = "Fondeador Editado";
             //$page = get_page($this->lista);            
             redirect("cat/fondeador/index/");//$page/            
@@ -69,26 +69,6 @@ class fondeador extends Admin_Controller{
             $fondeador['id'] = (int)$fondeador_id;
             $fondeador['direccion_id'] = $direccion_id; 
             $this->fondeador_model->update($fondeador);            
-        }
-    }
-    
-    private function check_contacto($fondeador_id=0){
-        $contacto = $this->input->post('contacto');
-        //pre($contacto,"--CONTACTO--");
-        if($fondeador_id > 0){
-            foreach($contacto as $tipo_contacto =>$dato){
-                $info = null;
-                $info['tabla'] = "cat_fondeador";                
-                $info['descripcion'] = $dato['descripcion'];
-                if( (int)$dato['id'] == 0 and $dato['descripcion']){
-                    $info['tabla_id'] = $fondeador_id;
-                    $info['tipo_contacto'] = $tipo_contacto;
-                    $this->contacto_model->insert($info);
-                }else if( (int)$dato['id'] > 0){
-                    $info['id'] = $dato['id'];
-                    $this->contacto_model->update($info);
-                }                
-            }
         }
     }
     

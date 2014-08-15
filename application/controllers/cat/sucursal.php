@@ -31,7 +31,7 @@ class sucursal extends Admin_Controller{
             $id = $this->sucursal_model->insert( $this->input->post('sucursal') );
             if( (int)$id > 0 ){ 
                 $this->check_direccion($id);
-                $this->check_contacto($id);
+                $this->check_contacto("cat_sucursal",$id);
                 $_SESSION['success'] = "Sucursal Agregada";
             }else
                 $_SESSION['error'] = "Error al Crear Sucursal";
@@ -47,7 +47,7 @@ class sucursal extends Admin_Controller{
             $sucursal = $this->input->post('sucursal');
             $this->sucursal_model->update($this->input->post('sucursal'));
             $this->check_direccion($sucursal['id']);
-            $this->check_contacto($sucursal['id']);
+            $this->check_contacto("cat_sucursal",$sucursal['id']);
             $_SESSION['success'] = "Sucursal Editada";
             //$page = get_page($this->lista);
             redirect("cat/sucursal/index/");//$page/
@@ -75,25 +75,6 @@ class sucursal extends Admin_Controller{
         }
     }
     
-    private function check_contacto($sucursal_id=0){
-        $contacto = $this->input->post('contacto');
-        
-        if($sucursal_id > 0){
-            foreach($contacto as $tipo_contacto =>$dato){
-                $info = null;
-                $info['tabla'] = "cat_sucursal";                
-                $info['descripcion'] = $dato['descripcion'];
-                if( (int)$dato['id'] == 0 and $dato['descripcion']){
-                    $info['tabla_id'] = $sucursal_id;
-                    $info['tipo_contacto'] = $tipo_contacto;
-                    $this->contacto_model->insert($info);
-                }else if( (int)$dato['id'] > 0){
-                    $info['id'] = $dato['id'];
-                    $this->contacto_model->update($info);
-                }                
-            }
-        }
-    }
     
     public function delete($page=0){        
         $resp = $this->sucursal_model->delete( $this->input->get('id') );

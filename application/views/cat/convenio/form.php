@@ -199,16 +199,69 @@ $(document).ready(function() {
                         message: 'El responsable debe de contener al menos 3 caracteres'
                     }                    
                 }
-            }      
+            },             
+            'contacto_email[]': {             
+                validators: {                   
+                    emailAddress: {
+                        message: 'El email no contiene una direcci'+acento_o+'n valida'
+                    }
+                }
+            }
             
             
         }
-    }).on('success.form.bv', function(e) {
+    })        
+    // AGREGAR TELEFONO
+    .on('click', '.addTelefono', function() {
+        var $template = $('#templateTelefono'),
+            $clone    = $template.clone().removeClass('hide').removeAttr('id').insertBefore($template),
+            $option   = $clone.find('[name="contacto_telefono[]"]');                
+        // Add new field
+        $('#form_convenio').bootstrapValidator('addField', $option);
+    })
+    // REMOVER TELEFONO
+    .on('click', '.removeTelefono', function() {
+        var $row    = $(this).parents('.form-group'), $option = $row.find('[name="contacto_telefono[]"]');
+        $row.remove();
+        // Remove field
+        $('#form_convenio').bootstrapValidator('removeField', $option);
+    })   
+    // AGREGAR CELULAR
+    .on('click', '.addCelular', function() {
+        var $template = $('#templateCelular'),
+            $clone    = $template.clone().removeClass('hide').removeAttr('id').insertBefore($template),
+            $option   = $clone.find('[name="contacto_celular[]"]');                
+        // Add new field
+        $('#form_convenio').bootstrapValidator('addField', $option);
+    })
+    // REMOVER CELULAR
+    .on('click', '.removeCelular', function() {
+        var $row    = $(this).parents('.form-group'), $option = $row.find('[name="contacto_celular[]"]');
+        $row.remove();
+        // Remove field
+        $('#form_convenio').bootstrapValidator('removeField', $option);
+    })
+    // AGREGAR EMAIL
+    .on('click', '.addEmail', function() {
+        var $template = $('#templateEmail'),
+            $clone    = $template.clone().removeClass('hide').removeAttr('id').insertBefore($template),
+            $option   = $clone.find('[name="contacto_email[]"]');                
+        // Add new field
+        $('#form_convenio').bootstrapValidator('addField', $option);
+    })
+    // REMOVER EMAIL
+    .on('click', '.removeEmail', function() {
+        var $row    = $(this).parents('.form-group'), $option = $row.find('[name="contacto_email[]"]');
+        $row.remove();
+        // Remove field
+        $('#form_convenio').bootstrapValidator('removeField', $option);
+    })
+    
+    .on('success.form.bv', function(e) {
         if(!confirm('Guardar los cambios?')){
             e.preventDefault();
             $("#btn_save").prop( "disabled", false );            
-        }        
-        
+        }
     }).on('error.form.bv', function(e, data) {
         alert('Por favor revise que los campos esten correctos\nVerifique todas las pesta'+acento_n+'as');        
     });

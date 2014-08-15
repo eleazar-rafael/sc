@@ -111,9 +111,7 @@ $(function() {
                         </a>
                         
                     </div>
-                </div>   
-                
-                
+                </div>  
                 <?php endif;?>
             </div>            
             <div id="tabs-2">
@@ -133,16 +131,13 @@ $(function() {
               <button type="button" onclick="btn_cancelar()" class="btn btn-warning"><span class="glyphicon glyphicon-ban-circle"></span> Cancel</button>
             </div>
         </div>
-    <?php echo form_close()?>  
-
-
-
-
+    <?php echo form_close()?>
 <script>
     
  <?php echo app_js_acento();?>
         
 $(document).ready(function() {
+    
     $('#form_canal').bootstrapValidator({
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
         feedbackIcons: {
@@ -174,11 +169,65 @@ $(document).ready(function() {
                         message: 'El responsable debe de contener al menos 3 caracteres'
                     }                    
                 }
-            }      
-            
-            
+            },             
+            'contacto_email[]': {             
+                validators: {                   
+                    emailAddress: {
+                        message: 'El email no contiene una direcci'+acento_o+'n valida'
+                    }
+                }
+            }           
+                    
         }
-    }).on('success.form.bv', function(e) {
+    })
+    
+    // AGREGAR TELEFONO
+    .on('click', '.addTelefono', function() {
+        var $template = $('#templateTelefono'),
+            $clone    = $template.clone().removeClass('hide').removeAttr('id').insertBefore($template),
+            $option   = $clone.find('[name="contacto_telefono[]"]');                
+        // Add new field
+        $('#form_canal').bootstrapValidator('addField', $option);
+    })
+    // REMOVER TELEFONO
+    .on('click', '.removeTelefono', function() {
+        var $row    = $(this).parents('.form-group'), $option = $row.find('[name="contacto_telefono[]"]');
+        $row.remove();
+        // Remove field
+        $('#form_canal').bootstrapValidator('removeField', $option);
+    })   
+    // AGREGAR CELULAR
+    .on('click', '.addCelular', function() {
+        var $template = $('#templateCelular'),
+            $clone    = $template.clone().removeClass('hide').removeAttr('id').insertBefore($template),
+            $option   = $clone.find('[name="contacto_celular[]"]');                
+        // Add new field
+        $('#form_canal').bootstrapValidator('addField', $option);
+    })
+    // REMOVER CELULAR
+    .on('click', '.removeCelular', function() {
+        var $row    = $(this).parents('.form-group'), $option = $row.find('[name="contacto_celular[]"]');
+        $row.remove();
+        // Remove field
+        $('#form_canal').bootstrapValidator('removeField', $option);
+    })
+    // AGREGAR EMAIL
+    .on('click', '.addEmail', function() {
+        var $template = $('#templateEmail'),
+            $clone    = $template.clone().removeClass('hide').removeAttr('id').insertBefore($template),
+            $option   = $clone.find('[name="contacto_email[]"]');                
+        // Add new field
+        $('#form_canal').bootstrapValidator('addField', $option);
+    })
+    // REMOVER EMAIL
+    .on('click', '.removeEmail', function() {
+        var $row    = $(this).parents('.form-group'), $option = $row.find('[name="contacto_email[]"]');
+        $row.remove();
+        // Remove field
+        $('#form_canal').bootstrapValidator('removeField', $option);
+    })
+    
+    .on('success.form.bv', function(e) {
         if(!confirm('Guardar los cambios?')){
             e.preventDefault();
             $("#btn_save").prop( "disabled", false );            
@@ -188,6 +237,24 @@ $(document).ready(function() {
         alert('Por favor revise que los campos esten correctos\nVerifique todas las pesta'+acento_n+'as');        
     });
     
+    
+    /*function notify() {
+    alert( "clicked" );
+    }
+    $("button" ).on( "click", notify );*/
+    
+    function myremover(){
+        alert('entro a la funcion.. ')
+    }
+    
+    $(".a-remove" ).on( "click", myremover );
+    
+    
+     /*$(".remove").on('click', function() {
+            //$(this).parent().parent().remove();
+            //$(this).parent().parent().remove();
+            alert('entro a la funcion.. ')
+    }); */
 });
 
 </script>

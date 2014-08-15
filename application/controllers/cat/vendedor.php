@@ -31,7 +31,7 @@ class vendedor extends Admin_Controller{
             $id = $this->vendedor_model->insert( $this->input->post('vendedor') );
             if( (int)$id > 0 ){ 
                 $this->check_direccion($id);
-                $this->check_contacto($id);
+                $this->check_contacto("cat_vendedor",$id);
                 $_SESSION['success'] = "Vendedor Agregado";
             }else
                 $_SESSION['error'] = "Error al Crear Vendedor";
@@ -47,7 +47,7 @@ class vendedor extends Admin_Controller{
             $vendedor = $this->input->post('vendedor');
             $this->vendedor_model->update( $vendedor );
             $this->check_direccion($vendedor['id']);
-            $this->check_contacto($vendedor['id']);
+            $this->check_contacto("cat_vendedor", $vendedor['id']);
             
             $_SESSION['success'] = "Vendedor Editado";
             //$page = get_page($this->lista);            
@@ -74,28 +74,7 @@ class vendedor extends Admin_Controller{
             $this->vendedor_model->update($vendedor);            
         }
     }
-    
-    private function check_contacto($vendedor_id=0){
-        $contacto = $this->input->post('contacto');
-        //pre($contacto,"--CONTACTO--");
-        if($vendedor_id > 0){
-            foreach($contacto as $tipo_contacto =>$dato){
-                $info = null;
-                $info['tabla'] = "cat_vendedor";                
-                $info['descripcion'] = $dato['descripcion'];
-                if( (int)$dato['id'] == 0 and $dato['descripcion']){ //INSERT
-                    $info['tabla_id'] = $vendedor_id;
-                    $info['tipo_contacto'] = $tipo_contacto;
-                    //pre($info, '--insert--');
-                    $this->contacto_model->insert($info);
-                }else if( (int)$dato['id'] > 0){ //UPDATE                    
-                    $info['id'] = $dato['id'];
-                    //pre($info, '--update--');
-                    $this->contacto_model->update($info);
-                }                
-            }
-        }
-    }
+
     
     public function delete($page=0){        
         $resp = $this->vendedor_model->delete( $this->input->get('id') );

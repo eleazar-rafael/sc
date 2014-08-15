@@ -26,30 +26,42 @@ class Admin_Controller extends MY_Controller
             unset($_SESSION['error']);
         }
         
-        //$this->admin_menu = $this->menu_model->get_menu_principal();        
-        //$this->set_permisos();
     }
     
     
     
-    function set_permisos(){
-        
-        $permiso = $_SESSION['permisos']['admin'][$this->controller];
-        //$this->data['permiso'] = $_SESSION[$this->controller];
-        $add = (!$permiso['insert'] and !$permiso['create'])? "display:none!important;":"";
-        $edit = (!$permiso['update'])? "display:none!important;":"";
-        $add_edit = (!$permiso['insert'] and !$permiso['update'])? "display:none!important;":"";
-        $delete = (!$permiso['delete'])? "display:none!important;":"";
-        $view = (!$permiso['view'])? "display:none!important;":"";
-        $edit_view = (!$permiso['view'] and !$permiso['update'])? "display:none!important;":"";
-        
-        
-        $this->data['permiso_css'] = "<style> .p-add{".$add."} .p-edit{".$edit."} .p-add-edit{".$add_edit."} .p-delete{".$delete."} .p-view{".$view."} .p-edit-view{".$edit_view."}</style>";
-        
-        
-        //pre( $permiso,' ---'.$this->controller.'--- ');
+    function set_permisos(){       
     }
     
     
+    function check_contacto($tabla="", $tabla_id=0){
+        
+        $this->contacto_guardar($tabla, $tabla_id, 106, $this->input->post('contacto_telefono_id'),$this->input->post('contacto_telefono'), $this->input->post('contacto_telefono_borrar'));        
+        $this->contacto_guardar($tabla, $tabla_id, 107, $this->input->post('contacto_celular_id'), $this->input->post('contacto_celular'), $this->input->post('contacto_celular_borrar'));        
+        $this->contacto_guardar($tabla, $tabla_id, 108, $this->input->post('contacto_email_id'), $this->input->post('contacto_email'), $this->input->post('contacto_email_borrar'));        
+    }
+    
+    function contacto_guardar($tabla, $tabla_id, $tipo_contacto, $arr_contacto_id, $arr_contacto, $arr_contacto_borrar){
+                
+        if($tabla_id > 0 and $arr_contacto_id){
+            foreach($arr_contacto_id as $pos =>$id){
+                $id = (int)$id;
+                $info = null;
+                $info['tabla'] = $tabla;
+                $info['descripcion'] = $arr_contacto[$pos];
 
+                if( $id == 0 and $info['descripcion']){
+                    $info['tabla_id'] = $tabla_id;
+                    $info['tipo_contacto'] = $tipo_contacto;                    
+                    $this->contacto_model->insert($info);
+                }else if( $id > 0 and  (int)$arr_contacto_borrar[$id] == $id){                    
+                    $this->contacto_model->delete($id);
+                }else if( $id > 0){
+                    $info['id'] = $id;                    
+                    $this->contacto_model->update($info);
+                }                
+            }
+        }        
+    }
+    
 }
