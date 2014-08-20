@@ -28,6 +28,7 @@ $(function() {
               <li><a href="#tabs-2">Direcci&oacute;n</a></li>
               <li><a href="#tabs-3">Contacto</a></li>
               <li><a href="#tabs-4">Intermediarios</a></li>
+              <li><a href="#tabs-5">Archivos</a></li>
               
             </ul>
             <div id="tabs-1">
@@ -122,6 +123,9 @@ $(function() {
             </div>
             <div id="tabs-4">
                 <?php $this->load->view("cat/canal/form_intermediario")?>                
+            </div>
+            <div id="tabs-5">
+                <?php $this->load->view("cat/form_archivo")?>                
             </div>
         </div>            
         

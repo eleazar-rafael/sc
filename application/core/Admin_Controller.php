@@ -64,4 +64,52 @@ class Admin_Controller extends MY_Controller
         }        
     }
     
+    function check_archivo($tabla="", $tabla_id=0){
+        $archivo_id =  $this->input->post("archivo_id"); 
+        $archivo_titulo =  $this->input->post("archivo_titulo");
+        $archivo_borrado =  $this->input->post("archivo_borrado");
+        $archivo_nombre =  $_FILES['archivo_nombre'];
+        
+        $server_path = realpath( "./uploads/");
+        //pre($arr_archivo, "arr_archivo");
+        if($tabla and $tabla_id > 0 and $archivo_id){
+            foreach($archivo_id as $pos => $id){
+                //pre($nombre," pos[$pos] ");
+                //SE NUEVO ARCHIVO
+                if($archivo_nombre['error'][$pos] ==0 and $id ==0){
+                    $info['tabla']   = $tabla;
+                    $info['tabla_id']= $tabla_id;
+                    $info['nombre_original']= $archivo_nombre['name'][$pos];
+                    $info['titulo']= $archivo_titulo[$pos];
+                    $info['carpeta']= $tabla;
+                    
+                    $this->db->trans_begin();
+                    $id = $this->archivo_model->insert($info);                    
+                    $ext  = app_file_extension($info['nombre_original']);
+                    $filename = md5($id).".$ext";
+                    $target_path = $server_path."/".$info['carpeta']."/$filename"; 
+                    
+                    if($id > 0 and move_uploaded_file($archivo_nombre['tmp_name'][$pos], $target_path)){                                           
+                        //ASIGNA TODOS LOS PERMISOS A LA IMAGEN - ACTUALIZA EL REGISTRO CON LOS DATOS DE LA IMAGEN
+                        $this->db->trans_commit();
+                        
+                        chmod($target_path,0777);
+                        
+                        $_file = array('id'=>$id,'nombre'=>$filename);
+                        $this->archivo_model->update($_file);
+                    }else{
+                         $this->db->trans_rollback();
+                    }
+                  //BORRAR ARCHIVO  
+                }elseif($id > 0 and (int)$archivo_borrado[$id] == (int)$id){
+                    $this->archivo_model->delete($id);
+                  //EDITAR TITULO
+                }elseif($id > 0 ){
+                    $_file = array('id'=>$id,'titulo'=>$archivo_titulo[$pos]);
+                    $this->archivo_model->update($_file);
+                }
+            }
+        }        
+    }
+    
 }

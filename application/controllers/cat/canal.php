@@ -14,7 +14,7 @@ class canal extends Admin_Controller{
         $this->load->model("direccion_model");
         $this->load->model("intermediario_model");
         $this->load->model("contacto_model");
-        $this->load->helper('file');
+        $this->load->model("archivo_model");
     }
     
     public function index(){
@@ -33,7 +33,7 @@ class canal extends Admin_Controller{
                 $this->check_direccion($id);
                 $this->check_contacto("cat_canal",$id);
                 $this->check_intermediario($id);
-                $this->upload_file($id); 
+                $this->check_archivo("cat_canal", $id);
                 $_SESSION['success'] = "Canal Agregado";
             }else
                 $_SESSION['error'] = "Error al Crear Canal";
@@ -50,32 +50,13 @@ class canal extends Admin_Controller{
             $this->canal_model->update($this->input->post('canal'));            
             $this->check_direccion($canal['id']);
             $this->check_contacto("cat_canal", $canal['id']);
-            $this->check_intermediario( $canal['id'] );
-            $this->upload_file($canal['id']);
+            $this->check_intermediario( $canal['id'] );            
+            $this->check_archivo("cat_canal", $canal['id']);
             $_SESSION['success'] = "Canal Editado";
             //$page = get_page($this->lista);
             redirect("cat/canal/index/");//$page/
         }
         $this->getform();
-    }
-    
-    private function upload_file( $canal_id = 0){
-        if( $canal_id > 0 and $_FILES['archivo_contrato']['error']==0){            
-        
-            $server_path = realpath( "./uploads/canal_contrato/");
-            $file_name = md5($canal_id)."." .  app_file_extension($_FILES['archivo_contrato']['name']); //"importador_".date("Ymd_His");
-            
-            $arrArchivo = array('path'=>'uploads/canal_contrato/'.$file_name,'nombre_original'=>$_FILES['archivo_contrato']['name'],'nombre' => $file_name );
-            $target_path = $server_path."/".$file_name;
-            //if( $this->upload->do_upload('archivo_contrato') ){  
-            if(move_uploaded_file($_FILES['archivo_contrato']['tmp_name'], $target_path)){
-                
-                chmod($target_path, 0777); 
-                $info['id'] = $canal_id;
-                $info['contrato'] = json_encode($arrArchivo);
-                $this->canal_model->update( $info );
-            }
-        }
     }
     
     private function check_intermediario($canal_id=0){
@@ -109,26 +90,7 @@ class canal extends Admin_Controller{
             $this->canal_model->update($canal);            
         }
     }
-    
-    /*private function check_contacto($tabla="", $tabla_id=0){
-        $contacto = $this->input->post('contacto');        
-        if($tabla_id > 0){
-            foreach($contacto as $tipo_contacto =>$dato){
-                $info = null;
-                $info['tabla'] = $tabla;
-                $info['descripcion'] = $dato['descripcion'];
-                if( (int)$dato['id'] == 0 and $dato['descripcion']){
-                    $info['tabla_id'] = $tabla_id;
-                    $info['tipo_contacto'] = $tipo_contacto;
-                    $this->contacto_model->insert($info);
-                }else if( (int)$dato['id'] > 0){
-                    $info['id'] = $dato['id'];
-                    $this->contacto_model->update($info);
-                }                
-            }
-        }
-    }*/
-    
+        
     public function delete($page=0){        
         $resp = $this->canal_model->delete( $this->input->get('id') );
         if((int)$resp >0)
@@ -147,6 +109,7 @@ class canal extends Admin_Controller{
         $this->data['contacto'] =  $this->contacto_model->get_data_por_tipo("cat_canal", (int)$this->data['canal']['id']);
         $this->data['cbo_intermediario'] = $this->intermediario_model->get_cbo_intermediario();
         $this->data['chk_intermediario'] =  $this->canal_intermediario_model->get_list( (int)$this->data['canal']['id'] );
+        $this->data['arr_archivo'] = $this->archivo_model->get_data_list("cat_canal", $this->input->get('id') );  
         
         $tipo_contacto = 3; $frecuencia_pago = 4;
         $this->data['cbo_frecuencia_pago'] = $this->catalogo_model->get_cbo_catalogo($frecuencia_pago, "-- Seleccione--");        

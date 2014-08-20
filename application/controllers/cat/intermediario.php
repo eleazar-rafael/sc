@@ -9,8 +9,8 @@ class intermediario extends Admin_Controller{
     public function __construct()
     {
         parent::__construct();  
-        //$this->load->library('Datatables');
-        $this->load->model("intermediario_model");     
+        $this->load->model("intermediario_model");
+        $this->load->model("archivo_model");
     }
     
     public function index(){
@@ -20,26 +20,28 @@ class intermediario extends Admin_Controller{
         
         $this->getlist();
     }
-    
-    
+        
     public function insert(){        
         //set_page($this->lista,$page);
         if (($this->input->server('REQUEST_METHOD') == 'POST') && $this->validateForm() ) {
             $id = $this->intermediario_model->insert( $this->input->post('intermediario') );
-            if( (int)$id > 0 ) 
+            if( (int)$id > 0 ){ 
+                $this->check_archivo("cat_intermediario", $id );
                 $_SESSION['success'] = "Intermediario Agregado";
-            else
+            }else
                 $_SESSION['error'] = "Error al Crear Intermediario";
           
             redirect("cat/intermediario/index");
         }
         $this->getform();
     }
-    
+           
     public function update(){
         //set_page($this->list,$page);
         if (($this->input->server('REQUEST_METHOD') == 'POST') && $this->validateForm() ) {
-            $this->intermediario_model->update($this->input->post('intermediario'));
+            $intermediario = $this->input->post('intermediario');
+            $this->intermediario_model->update($intermediario);
+            $this->check_archivo("cat_intermediario", $intermediario['id']);
             $_SESSION['success'] = "Intermediario Editado";
             //$page = get_page($this->lista);
             redirect("cat/intermediario/index/");//$page/
@@ -60,7 +62,8 @@ class intermediario extends Admin_Controller{
         
         $page = get_page($this->lista);             
         $this->data['heading_title'] ="Intermediario / ";
-        $this->data['intermediario'] = $this->intermediario_model->get_data( $this->input->get('id') );     
+        $this->data['intermediario'] = $this->intermediario_model->get_data( $this->input->get('id') );   
+        $this->data['arr_archivo'] = $this->archivo_model->get_data_list("cat_intermediario", $this->input->get('id') );   
         
         $id = isset($this->data['intermediario']['id'])? (int)$this->data['intermediario']['id'] : 0;        
         if($id == 0){
