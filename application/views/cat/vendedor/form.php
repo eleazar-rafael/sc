@@ -8,7 +8,20 @@ $(function() {
 });
 </script>
 <div class="panel panel-primary" >
-    <div class="panel-heading"><span class="glyphicon glyphicon-pencil"></span>&nbsp; <?php echo $heading_title?></div>
+    
+    <div class="panel-heading">
+        <div class="pull-left">
+        <span class="glyphicon glyphicon-pencil"></span>&nbsp; <?php echo $heading_title?>
+        </div>
+        <div class="pull-right">
+        <?php 
+            if((int)$vendedor['id'] > 0 )
+                echo anchor("cat/vendedor_meta/index/?vendedor_id=".$vendedor['id'],'<span class="glyphicon glyphicon-screenshot"></span>  Agregar Metas ','class="btn btn-primary title="Agregar Metas"')
+                    
+        ?> 
+        </div>
+        <div style="clear: both;"></div>
+    </div>
     <?php /*<div class="panel-body">      */?>
         <?php echo form_open($action,"id='form' class='form-horizontal' role='form'" );?>
         
@@ -21,7 +34,7 @@ $(function() {
               <li><a href="#tabs-1">Datos Generales</a></li>
               <li><a href="#tabs-2">Direccion</a></li>
               <li><a href="#tabs-3">Contacto</a></li>
-              <li><a href="#tabs-4">Ventas</a></li>
+              <?php /*<li><a href="#tabs-4">Ventas</a></li>*/?>
             </ul>
             <div id="tabs-1">
                 <div class="form-group">
@@ -50,6 +63,7 @@ $(function() {
             <div id="tabs-3">
                 <?php $this->load->view("cat/form_contacto")?>                
             </div>
+            <?php /*
             <div id="tabs-4">
                 <div class="form-group">
                   <label for="metas_ventas_mensuales" class="col-md-3 control-label">Metas ventas mensuales</label>
@@ -57,7 +71,7 @@ $(function() {
                       <?php echo form_input("vendedor[metas_ventas_mensuales]", $vendedor['metas_ventas_mensuales']," id='metas_ventas_mensuales' class='form-control'" )?>            
                   </div>
                 </div>
-             </div>
+             </div> */?>
             
         </div>            
         

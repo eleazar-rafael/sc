@@ -58,28 +58,43 @@ function cbo_anio($opIni="", $inicio="", $fin=""){
     return $arr;
 }
 
-function cbo_mes($opIni="")
-{
+function cbo_mes($opIni=""){
 
-    $arr = array('00' => $opIni,
-                 '01' => 'Enero',
-                 '02' => 'Febrero',
-                 '03' => 'Marzo',
-                 '04' => 'Abril',
-                 '05' => 'Mayo',
-                 '06' => 'Junio',
-                 '07' => 'Julio',
-                 '08' => 'Agosto',
-                 '09' => 'Septiembre',
-                 '10' => 'Octubre',
-                 '11' => 'Noviembre',
-                 '12' => 'Diciembre'
-                );
+    if($opIni) $arr[] = $opIni;
+    $arr[1] = 'Enero';
+    $arr[2] = 'Febrero';
+    $arr[3] = 'Marzo';
+    $arr[4] = 'Abril';
+    $arr[5] = 'Mayo';
+    $arr[6] = 'Junio';
+    $arr[7] = 'Julio';
+    $arr[8] = 'Agosto';
+    $arr[9] = 'Septiembre';
+    $arr[10] = 'Octubre';
+    $arr[11] = 'Noviembre';
+    $arr[12] = 'Diciembre';          
 
     return $arr;
 }
 
+function cbo_mes_abreviado($opIni=""){
 
+    if($opIni) $arr[] = $opIni;
+    $arr[1] = 'Ene';
+    $arr[2] = 'Feb';
+    $arr[3] = 'Mar';
+    $arr[4] = 'Abr';
+    $arr[5] = 'May';
+    $arr[6] = 'Jun';
+    $arr[7] = 'Jul';
+    $arr[8] = 'Ago';
+    $arr[9] = 'Sep';
+    $arr[10] = 'Oct';
+    $arr[11] = 'Nov';
+    $arr[12] = 'Dic';          
+
+    return $arr;
+}
 
 function cbo_dia($opIni="", $mes =0, $anio=0)
 {

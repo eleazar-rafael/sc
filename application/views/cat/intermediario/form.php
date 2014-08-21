@@ -64,13 +64,7 @@
                 <div class="col-md-1" style="padding-top: 8px;">
                     <i>en d&iacute;as</i>
                 </div>
-            </div>
-            <div class="form-group">
-              <label for="contrato" class="col-md-3 control-label">No de Contrato</label>
-              <div class="col-md-3">
-                  <?php echo form_input("intermediario[contrato]",$intermediario['contrato'], " class='form-control' ") ?>
-              </div>
-            </div>
+            </div>         
         </div>
         <div id="tabs-2">
             <div class="form-group">

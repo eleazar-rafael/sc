@@ -34,6 +34,7 @@
             </th>
             <th width="16" ></th>
             <th width="16" ></th>
+            <th width="16" ></th>
         </tr>            
     </thead>
     <tbody>
@@ -44,7 +45,7 @@
             <td align="center"><input type="text" name="filter[rfc]" value="<?php echo $filter['rfc']?>" style="width:95%"></td>                
             <td align="center"><input type="text" name="filter[porcen_ventas]" value="<?php echo $filter['porcen_ventas']?>" style="width:95%"></td>
             <td align="center"><input type="text" name="filter[porcen_comision]" value="<?php echo $filter['porcen_comision']?>" style="width:95%"></td>
-            <td colspan="2" align="center">
+            <td colspan="3" align="center">
                 <button type="button"  class="btn btn-default btn-xs" onclick="filter()">
                     <span class="glyphicon glyphicon-search" title="Buscar" ></span>
                 </button>
@@ -60,6 +61,8 @@
                 <td ><?php echo $row['porcen_ventas']?></td>
                 <td ><?php echo $row['porcen_comision']?></td>                
                 <td><?php echo anchor("cat/vendedor/update/?id=".$row['id'], '<span class="glyphicon glyphicon-edit"></span>','title="Editar Registro" class="btn btn-primary btn-xs"') ?></td>
+                <td><?php echo anchor("cat/vendedor_meta/index/?vendedor_id=".$row['id'], '<span class="glyphicon glyphicon-screenshot"></span>','title="Metas del vendedor" class="btn btn-primary btn-xs"') ?></td>
+                
                 <td><a href="javascript:;" onclick="borrar('<?php echo $row['id']?>');" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove" title="Borrar Registro" ></span></a></td>
             </tr>
         <?php endforeach;?>
