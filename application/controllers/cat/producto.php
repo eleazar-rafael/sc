@@ -108,7 +108,13 @@ class producto extends Admin_Controller{
         $this->data['sort_plazos_mensuales']  = site_url($pre_url."sort=plazos_mensuales").$url_order;
         $this->data['sort_tasa']  = site_url($pre_url."sort=tasa").$url_order;
         $this->data['sort_tasa_moratoria']  = site_url($pre_url."sort=tasa_moratoria").$url_order;
-        $this->data['sort_seguro otros_gastos']  = site_url($pre_url."sort=seguro otros_gastos").$url_order;
+		$this->data['sort_plazo_minimo']  = site_url($pre_url."sort=plazo_minimo").$url_order;
+        $this->data['sort_tipo_seguto']  = site_url($pre_url."sort=tipo_seguro").$url_order;
+		$this->data['sort_seguro_fijo']  = site_url($pre_url."sort=seguro_fijo").$url_order;
+        $this->data['sort_seguro_porcentaje']  = site_url($pre_url."sort=seguro_porcentaje").$url_order;
+		$this->data['sort_tipo_otros_gastos']  = site_url($pre_url."sort=tipo_otros_gastos").$url_order;
+		$this->data['sort_otros_gastos_fijo']  = site_url($pre_url."sort=otros_gastos_fijo").$url_order;
+		$this->data['sort_otros_gastos_porcentaje']  = site_url($pre_url."sort=otros_gastos_porcentaje").$url_order;
                             
         /*monto_minimo_prestamo, monto_maximo_prestamo, tipo_comision, comision_apertura, porcen_comision_apertura, financiamiento_comision
         tasa, plazos_mensuales, tasa_moratoria, seguro, otros_gastos  */                

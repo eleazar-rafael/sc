@@ -70,7 +70,41 @@ $(function() {
                         %
                     </div>
                 </div>
+				
+							
 				<div class="form-group">
+                    <label for="financiamiento_comision" class="col-md-3 control-label">Financiamiento de la comisi&oacute;n*</label>
+                    <div class="col-md-2">
+                        <?php echo form_input("producto[financiamiento_comision]", $producto['financiamiento_comision']," id='financiamiento_comision' class='form-control' " ); //?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tasa" class="col-md-3 control-label">Tasa*</label>
+                    <div class="col-md-1">
+                        <?php echo form_input("producto[tasa]", $producto['tasa']," id='tasa' class='form-control spinner_porcen' " ); //?>
+                    </div>
+                    <div class="col-md-1" style="padding-top:8px;">%</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="plazos_mensuales" class="col-md-3 control-label">Plazos mensuales*</label>
+                    <div class="col-md-1">
+                        <?php //echo form_dropdown("producto[plazos_mensuales]", $cbo_plazos_mensuales,$producto['plazos_mensuales']," id='plazos_mensuales' class='form-control' " )?>
+                        <?php echo form_input("producto[plazos_mensuales]", $producto['plazos_mensuales']," id='plazos_mensuales' class='form-control spinner' " )?>
+                    </div>
+                    <div class="col-md-1" style="padding-top:8px;">
+                        <i>Meses</i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tasa_moratoria" class="col-md-3 control-label">Tasa moratoria*</label>
+                    <div class="col-md-1">
+                        <?php echo form_input("producto[tasa_moratoria]", $producto['tasa_moratoria']," id='tasa_moratoria' class='form-control spinner_porcen' " )?>
+                    </div>
+                    <div class="col-md-1" style="padding-top:8px;">%</div>
+                </div>
+              
+			  <div class="form-group">
                     <label for="tipo_seguro" class="col-md-3 control-label">Tipo de Seguro*</label>
                     <div class="col-md-2">
                         <?php echo form_dropdown("producto[tipo_seguro]", $cbo_tipo_seguro,$producto['tipo_seguro']," id='tipo_seguro' class='form-control' " )?>
@@ -103,14 +137,14 @@ $(function() {
                 </div>
                 <?php $stfijo = ($producto['tipo_otros_gastos'] <> 125)? "style='display:none;'" : ""?>
                 <div class="form-group tipo_otros_gastos" <?php echo $stfijo?> id="tr_125">
-                    <label for="otros_gastos_fijo" class="col-md-3 control-label">Seguro Fijo*</label>
+                    <label for="otros_gastos_fijo" class="col-md-3 control-label">Valor Fijo*</label>
                     <div class="col-md-2">
                         <?php echo form_input("producto[otros_gastos_fijo]", $producto['otros_gastos_fijo']," id='otros_gastos_fijo' class='form-control spinner_moneda' " ) //maxlength='10'?> 
                     </div>                   
                 </div>                
                 <?php $stporcen = ($producto['tipo_otros_gastos'] <> 126)? "style='display:none;'" : ""?>
                 <div class="form-group tipo_otros_gastos" <?php echo $stporcen?> id="tr_126">
-                    <label for="otros_gastos_porcentaje" class="col-md-3 control-label">Porcentaje del Seguro* </label>
+                    <label for="otros_gastos_porcentaje" class="col-md-3 control-label">Valor Porcentaje* </label>
                     <div class="col-md-1">
                         <?php echo form_input("producto[otros_gastos_porcentaje]", $producto['otros_gastos_porcentaje']," id='otros_gastos_porcentaje' class='form-control spinner_porcen' " ) //maxlength='10'?>
                     </div>              
@@ -118,51 +152,7 @@ $(function() {
                         %
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="financiamiento_comision" class="col-md-3 control-label">Financiamiento de la comisi&oacute;n*</label>
-                    <div class="col-md-2">
-                        <?php echo form_input("producto[financiamiento_comision]", $producto['financiamiento_comision']," id='financiamiento_comision' class='form-control' " ); //?>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="tasa" class="col-md-3 control-label">Tasa*</label>
-                    <div class="col-md-1">
-                        <?php echo form_input("producto[tasa]", $producto['tasa']," id='tasa' class='form-control spinner_porcen' " ); //?>
-                    </div>
-                    <div class="col-md-1" style="padding-top:8px;">%</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="plazos_mensuales" class="col-md-3 control-label">Plazos mensuales*</label>
-                    <div class="col-md-1">
-                        <?php //echo form_dropdown("producto[plazos_mensuales]", $cbo_plazos_mensuales,$producto['plazos_mensuales']," id='plazos_mensuales' class='form-control' " )?>
-                        <?php echo form_input("producto[plazos_mensuales]", $producto['plazos_mensuales']," id='plazos_mensuales' class='form-control spinner' " )?>
-                    </div>
-                    <div class="col-md-1" style="padding-top:8px;">
-                        <i>Meses</i>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="tasa_moratoria" class="col-md-3 control-label">Tasa moratoria*</label>
-                    <div class="col-md-1">
-                        <?php echo form_input("producto[tasa_moratoria]", $producto['tasa_moratoria']," id='tasa_moratoria' class='form-control spinner_porcen' " )?>
-                    </div>
-                    <div class="col-md-1" style="padding-top:8px;">%</div>
-                </div>
-                <div class="form-group">
-                    <label for="seguro" class="col-md-3 control-label">Seguro *</label>
-                    <div class="col-md-1">
-                        <?php echo form_input("producto[seguro]", $producto['seguro']," id='seguro' class='form-control spinner_porcen' " )?>
-                    </div>
-                    <div class="col-md-1" style="padding-top:8px;">%</div>
-                </div>
-                <div class="form-group">
-                    <label for="otros_gastos" class="col-md-3 control-label">Otros Gastos *</label>
-                    <div class="col-md-1">
-                        <?php echo form_input("producto[otros_gastos]", $producto['otros_gastos']," id='otros_gastos' class='form-control spinner_porcen' " )?>
-                    </div>
-                    <div class="col-md-1" style="padding-top:8px;" >%</div>
-                </div>
+			  
             </div>                        
         </div>            
         
