@@ -6,6 +6,7 @@
  */
 class vendedor extends Admin_Controller{
     var $lista = "vendedor";
+    var $opmenu = 1; //Administracion
     public function __construct()
     {
         parent::__construct();  

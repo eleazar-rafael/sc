@@ -6,6 +6,7 @@
  */
 class convenio_calendario extends Admin_Controller{
     var $lista = "convenio_calendario";
+    var $opmenu = 1; //Administracion
     var $convenio_id = 0;
     var $convenio = null;
     public function __construct()

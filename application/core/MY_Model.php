@@ -4,7 +4,8 @@ class MY_Model extends CI_Model {
     
     function __construct()
     {
-        parent::__construct();            
+        parent::__construct();  
+        $this->load->helper("db");
         $this->user = $this->session->userdata("arrUser");
     }
 
@@ -16,7 +17,7 @@ class MY_Model extends CI_Model {
     
     function get_cbo($table="", $select="id,nombre", $where="", $order_by="", $opInicial=""){
         $this->db->select($select,FALSE);
-        if(is_array($where)) $this->db->where($where);        
+        if(is_array($where)) $this->db->where($where, "",false);        
         if($order_by) $this->db->order_by($order_by);
         $query = $this->db->get($table);
         

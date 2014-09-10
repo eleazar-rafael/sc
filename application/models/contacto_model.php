@@ -60,4 +60,60 @@ class contacto_model extends MY_Model{
         }
     }
         
+    //--------------------------------------------------------------------------
+    // CONTACTOS DEL CLIENTE - TABLA Contacts
+    //--------------------------------------------------------------------------
+    
+    function get_data_cliente($id=0){
+        $query =  $this->db->where(array('ifnull(Active,0)'=>1,'Id'=>(int)$id ))->get("Contacts");
+        return $query->row_array();
+    }
+    function get_contactos_cliente($entity = 0) {
+        
+        $sql = "SELECT * from Contacts WHERE Entity=".(int)$entity." AND Active=1 ORDER BY TypeContact ASC";
+        $sql = "SELECT Contacts.*,  Companies.Name as trabajo, ContactTypes.Name as tipo_contacto
+                from Contacts 
+                LEFT JOIN Works ON Works.Id = Contacts.Work
+                LEFT JOIN Companies ON Companies.Id = Works.Company
+                LEFT JOIN ContactTypes ON ContactTypes.Id = Contacts.TypeContact
+                WHERE Contacts.Entity=".(int)$entity."  AND Contacts.Active=1 
+
+                ORDER BY TypeContact ASC";
+        
+        $query = $this->db->query($sql);
+        return $query->result_array();   
+        
+    }
+    
+    function insert_cliente($post)
+    {        
+        if($post){            
+            
+            $this->db->insert("Contacts",$post);
+            return  $this->db->insert_id();
+        }        
+    }
+
+    function update_cliente($post)
+    {
+        if(is_array($post)){           
+            $this->db->where("Id",(int)$post['Id']);
+            $this->db->update("Contacts",$post);
+            return true;            
+        }
+    }
+    
+    function delete_cliente($id){
+        $id = (int)$id;
+        if($id >0 ){
+            $post['Active'] = 0;
+            $this->db->where("Id",(int)$id);
+            $this->db->update("Contacts",$post);
+            $affected = $this->db->affected_rows();
+
+            return $affected;
+        }
+    }
+    
+    
 }

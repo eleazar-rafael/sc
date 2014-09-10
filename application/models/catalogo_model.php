@@ -17,25 +17,6 @@ class catalogo_model extends MY_Model{
         
         return $row;
     }
-
-    /*function get_id($tipo_id=0, $nombre="")
-    {
-        $tipo_id = (int)$tipo_id;
-        if($tipo_id ==0 or $nombre =='') return 0;
-            
-        $sql = "SELECT * FROM ".$this->tabla." WHERE catalogo_tipo_id = $tipo_id and nombre='".trim($nombre)."' and ifnull(borrado,0) = 0  order by id desc limit 1";
-        $query = $this->db->query($sql);
-        if($row = $query->row_array()){
-            return $row['id'];
-        }else{
-            $cat = null;
-            $cat['catalogo_tipo_id'] = $tipo_id;
-            $cat['nombre'] = trim($nombre);
-            $id = $this->add($cat);
-            return $id;
-        }        
-    }*/
-    
         
     function get_data_list($tipo_id=0, $data = array())
     {	
@@ -145,11 +126,7 @@ class catalogo_model extends MY_Model{
     {
         $db_cat = $this->get_data( $id );
         $this->db->where("id",$id)->update($this->tabla,array('borrado'=> 1));        
-        $affected = $this->db->affected_rows();
-        /*if($db_cat['id']){
-            $sql= "UPDATE catalogo SET borrado = 1 where padre_path like '".$like."%' ";
-            $rs = $this->db->query($sql);
-        }*/
+        $affected = $this->db->affected_rows();        
 
         if($affected){
             //$this->add_track("catalogo", $id, $post, "delete");
@@ -170,4 +147,52 @@ class catalogo_model extends MY_Model{
         return $cbo;
     }
     
+    //--------------------------------------------------------------------------
+    // FUNCIONES DE LA DB ORIGINAL DE FASTCREDIT
+    //--------------------------------------------------------------------------
+    function get_cbo_nacionalidad($opIni=""){        
+        return $this->get_cbo("Nationalities", "Id as id, Name as nombre",  array('Active'=>1),"Name asc", $opIni );        
+    }
+    
+    function get_cbo_estadocivil($opIni=""){        
+        return $this->get_cbo("CivilStates", "Id as id, Name as nombre",  array('Active'=>1),"Name asc", $opIni );        
+    }
+    
+    function get_cbo_pais($opIni=""){        
+        return $this->get_cbo("Countries", "Id as id, Name as nombre", array('Active'=>1),"Name asc", $opIni );        
+    }
+    
+    function get_pais_de_estado($estado_id=0){        
+        $query = $this->db->where("Id", (int)$estado_id)->get("States");
+        $row = $query->row_array();
+        return $row['Country'];
+    }
+    
+    function get_cbo_estado($opIni="", $pais_id=0){        
+        return $this->get_cbo("States", "Id as id, Name as nombre", array('Active'=>1,'Name!='=>'""' ,'Country'=>(int)$pais_id),"Name asc", $opIni );        
+    }
+    
+    function get_cbo_ciudad($opIni="", $estado_id=0){        
+        return $this->get_cbo("Cities", "Id as id, Name as nombre", array('Active'=>1, 'State'=>(int)$estado_id),"Name asc", $opIni );        
+    }
+    
+    function get_cbo_regimenpatrimonial($opIni=""){        
+        return $this->get_cbo("PatrimonialRegimes", "Id as id, Name as nombre", array('Active'=>1),"Name asc", $opIni );        
+    }
+    
+    function get_cbo_gradoestudio($opIni=""){        
+        return $this->get_cbo("StudyDegrees", "Id as id, Name as nombre", array('Active'=>1),"Name asc", $opIni );        
+    }
+       
+    function get_cbo_tipo_direccion($opInicial =""){
+        return $this->get_cbo("AddressTypes", "Id as id, Name as nombre", array('ifnull(Active,0)'=>1), "Name", $opInicial);
+    }
+    
+    function get_cbo_tipo_vivienda($opInicial =""){
+        return $this->get_cbo("HouseTypes", "Id as id, Name as nombre", array('ifnull(Active,0)'=>1), "Name", $opInicial);
+    }
+    
+    function get_cbo_tipo_contacto($opInicial =""){
+        return $this->get_cbo("ContactTypes", "Id as id, Name as nombre", array('ifnull(Active,0)'=>1), "Name", $opInicial);
+    }
 }

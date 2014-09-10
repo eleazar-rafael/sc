@@ -6,6 +6,7 @@
  */
 class intermediario extends Admin_Controller{
     var $lista = "intermediario";
+    var $opmenu = 1; //Administracion
     public function __construct()
     {
         parent::__construct();  

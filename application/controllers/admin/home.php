@@ -15,4 +15,9 @@ class Home extends Admin_Controller {
         $this->layout->view('admin/home', $this->data);		
         
     }
+    
+    function buscar_cliente($cliente_id){
+        
+    }
+    
 }    

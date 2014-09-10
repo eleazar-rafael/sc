@@ -6,6 +6,7 @@
  */
 class producto extends Admin_Controller{
     var $lista = "producto";
+    var $opmenu = 1; //Administracion
     public function __construct()
     {
         parent::__construct();

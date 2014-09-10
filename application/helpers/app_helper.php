@@ -96,17 +96,16 @@ function cbo_mes_abreviado($opIni=""){
     return $arr;
 }
 
-function cbo_dia($opIni="", $mes =0, $anio=0)
+function cbo_dia($opIni="", $anio=0, $mes =0 )
 {
     $dia_inicial = 1;
     $dia_final = 31;
-    if($mes > 0 and $anio >1900) $dia_final = ultimo_dia($anio,$mes);
+    if($mes > 0 and strlen($anio) ==4) $dia_final = ultimo_dia($anio,$mes);
 
-    $arr['00'] = $opIni;
-    for($i= $dia_inicial; $i <= $dia_final; $i++)
+    $arr[] = $opIni;
+    for($dia= $dia_inicial; $dia <= $dia_final; $dia++)
     {
-        $dia = (strlen($i)==1)? "0".$i: $i;
-        $arr[$dia] = $dia;
+        $arr[$dia] = $dia;        
     }
 
     return $arr;
@@ -123,15 +122,15 @@ function ultimo_dia($anio,$mes){
        }
 
    switch($mes) {
-       case 01: return 31; break;
-       case 02: return $dias_febrero; break;
-       case 03: return 31; break;
-       case 04: return 30; break;
-       case 05: return 31; break;
-       case 06: return 30; break;
-       case 07: return 31; break;
-       case 08: return 31; break;
-       case 09: return 30; break;
+       case 1: return 31; break;
+       case 2: return $dias_febrero; break;
+       case 3: return 31; break;
+       case 4: return 30; break;
+       case 5: return 31; break;
+       case 6: return 30; break;
+       case 7: return 31; break;
+       case 8: return 31; break;
+       case 9: return 30; break;
        case 10: return 31; break;
        case 11: return 30; break;
        case 12: return 31; break;
@@ -154,4 +153,23 @@ function app_js_acento(){
         var acento_N = '\u00d1';\n
     ";
     return $str;
+}
+
+function agrupar_fecha($fnac){
+    $anio = (strlen($fnac['anio'])==4)? (int)$fnac['anio']: 0;
+    $mes =  (int)$fnac['mes'];
+    $dia = (int)$fnac['dia'];
+    $fecha = null;
+    if($anio > 0 and $mes > 0 and $dia> 0){
+        $fecha = $anio."-".$mes."-".$dia;
+    }
+    return $fecha;
+}
+
+function separar_fecha($strFecha=""){
+    $tmp = explode("-", $strFecha);
+    $fecha['anio'] = $tmp[0];
+    $fecha['mes'] = $tmp[1];
+    $fecha['dia'] = $tmp[2];
+    return $fecha;
 }

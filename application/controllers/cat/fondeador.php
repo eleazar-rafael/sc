@@ -6,6 +6,7 @@
  */
 class fondeador extends Admin_Controller{
     var $lista = "fondeador";
+    var $opmenu = 1; //Administracion
     public function __construct()
     {
         parent::__construct();  

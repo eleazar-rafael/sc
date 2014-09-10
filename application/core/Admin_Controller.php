@@ -1,6 +1,7 @@
 <?php
 class Admin_Controller extends MY_Controller
 {
+    var $pais_mexico = 135;
     function __construct()
     {
         parent::__construct();
@@ -25,6 +26,7 @@ class Admin_Controller extends MY_Controller
             $this->data['error_warning'] = $_SESSION['error'];
             unset($_SESSION['error']);
         }
+     
         
     }
     

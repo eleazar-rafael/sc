@@ -5,6 +5,7 @@
  * @author Eleazar Rafael 
  */
 class vendedor_meta extends Admin_Controller{
+    var $opmenu = 1; //Administracion
     var $vendedor_id = 0;
     var $vendedor = null;
     

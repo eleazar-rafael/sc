@@ -136,8 +136,9 @@ $(function() {
             </div>
         </div>
     <?php echo form_close()?>
-<script>
-    
+</div>
+
+<script>    
  <?php echo app_js_acento();?>
         
 $(document).ready(function() {
