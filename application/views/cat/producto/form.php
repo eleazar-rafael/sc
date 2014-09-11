@@ -132,7 +132,7 @@ $(function() {
 				<div class="form-group">
                     <label for="tipo_otros_gastos" class="col-md-3 control-label">Otros Gastos*</label>
                     <div class="col-md-2">
-                        <?php echo form_dropdown("producto[tipo_otros_gastos]", $cbo_tipo_seguro,$producto['tipo_otros_gastos']," id='tipo_otros_gastos' class='form-control' " )?>
+                        <?php echo form_dropdown("producto[tipo_otros_gastos]", $cbo_tipo_otros_gastos,$producto['tipo_otros_gastos']," id='tipo_otros_gastos' class='form-control' " )?>
                     </div>
                 </div>
                 <?php $stfijo = ($producto['tipo_otros_gastos'] <> 125)? "style='display:none;'" : ""?>
@@ -177,6 +177,16 @@ $(document).ready(function() {
         $(".tipo_comision").hide();        
         $("#tr_"+$(this).val()).show();
     });
+    
+    $("#tipo_seguro").on("change", function(){
+        $(".tipo_seguro").hide();        
+        $("#tr_"+$(this).val()).show();
+    });
+    $("#tipo_otros_gastos").on("change", function(){
+        $(".tipo_otros_gastos").hide();        
+        $("#tr_"+$(this).val()).show();
+    });
+    
     
     $('#form_producto').bootstrapValidator({
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later

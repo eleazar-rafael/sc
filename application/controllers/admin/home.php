@@ -1,6 +1,5 @@
 <?php
 
-//class App extends CI_Controller {
 class Home extends Admin_Controller {
     
     public function __construct()
