@@ -39,6 +39,12 @@ $(function() {
                   </div>
                 </div>
                 <div class="form-group">
+                    <label for="descripcion" class="col-md-3 control-label">Descripci&oacute;n del canal</label>
+                    <div class="col-md-8">
+                        <?php echo form_input("canal[descripcion]",$canal['descripcion'], " id='descripcion'  class='form-control' ") ?>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="titular" class="col-md-3 control-label">Titular del canal</label>
                   <div class="col-md-5">
                       <?php echo form_input("canal[titular]", $canal['titular']," id='titular' class='form-control' " )?>            
@@ -90,10 +96,10 @@ $(function() {
                         <?php echo form_dropdown("canal[frecuencia_pagos]", $cbo_frecuencia_pago,$canal['frecuencia_pagos']," id='frecuencia_pagos' class='form-control' " )?>            
                     </div>
                 </div>
+                <?php /*
                 <div class="form-group">
                     <label for="contrato" class="col-md-3 control-label">Subir archivo del contrato</label>
-                    <div class="col-md-5">
-                        <?php //echo form_input("canal[contrato]", $canal['contrato']," id='contrato' class='form-control' " )?>
+                    <div class="col-md-5">                        
                         <?php echo form_upload("archivo_contrato","asda" ," id='contrato' class='form-control' " )?>
                     </div>
                 </div>                
@@ -113,7 +119,7 @@ $(function() {
                         
                     </div>
                 </div>  
-                <?php endif;?>
+                <?php endif; */?>
             </div>            
             <div id="tabs-2">
                 <?php $this->load->view("cat/form_direccion")?>                

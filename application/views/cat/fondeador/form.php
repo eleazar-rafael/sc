@@ -33,7 +33,13 @@
                       <?php echo form_input("fondeador[nombre]", $fondeador['nombre']," id='nombre' class='form-control'" )?>            
                   </div>
                 </div>
-				<div class="form-group">
+                <div class="form-group">
+                  <label for="descripcion" class="col-md-2 control-label">Descripci&oacute;n del fondeador</label>
+                  <div class="col-md-8">
+                      <?php echo form_input("fondeador[descripcion]",$fondeador['descripcion'], " id='descripcion'  class='form-control' ") ?>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label for="rfc" class="col-md-2 control-label">RFC</label>
                   <div class="col-md-2">
                       <?php echo form_input("fondeador[rfc]", $fondeador['rfc']," id='rfc' data-mask='aaaa999999ww*' class='form-control'" )?>            
@@ -45,12 +51,7 @@
                       <?php echo form_input("fondeador[contacto]", $fondeador['contacto']," id='contacto' class='form-control'" )?>            
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="descripcion" class="col-md-2 control-label">Descripci&oacute;n</label>
-                  <div class="col-md-8">
-                      <?php echo form_input("fondeador[descripcion]",$fondeador['descripcion'], " id='descripcion'  class='form-control' ") ?>
-                  </div>
-                </div>
+                
             </div>
             <div id="tabs-2">
                 <?php $this->load->view("cat/fondeador/form_direccion")?>

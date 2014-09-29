@@ -173,3 +173,15 @@ function separar_fecha($strFecha=""){
     $fecha['dia'] = $tmp[2];
     return $fecha;
 }
+
+function separar_sindicato($str="", $tipo=""){
+    //0[fondeador] - 1[intermediario] - 2[canal] - 3[sucursal]
+    $tmp = explode("-", $str);
+    switch ($tipo){
+        case 'FONDEADOR': return trim($tmp[0]); break;
+        case 'INTERMEDIARIO': return trim($tmp[1]); break;
+        case 'CANAL': return trim($tmp[2]); break;
+        case 'SUCURSAL': return trim($tmp[3]); break;
+    }    
+    return $temp;
+}

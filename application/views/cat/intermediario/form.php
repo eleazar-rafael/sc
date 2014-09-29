@@ -27,15 +27,21 @@
         </ul>
         <div id="tabs-1">
             <div class="form-group">
-              <label for="nombre" class="col-md-3 control-label">Nombre</label>
+              <label for="nombre" class="col-md-3 control-label">Nombre del intermediario</label>
               <div class="col-md-5">
-                  <?php echo form_input("intermediario[nombre]", $intermediario['nombre']," id='nombre' class='form-control'" )?>            
+                  <?php echo form_input("intermediario[nombre]", $intermediario['nombre']," id='nombre' class='form-control'" )?>
               </div>
+            </div>
+            <div class="form-group">
+                <label for="descripcion" class="col-md-3 control-label">Descripci&oacute;n del intermediario</label>
+                <div class="col-md-8">
+                    <?php echo form_input("intermediario[descripcion]",$intermediario['descripcion'], " id='descripcion'  class='form-control' ") ?>
+                </div>
             </div>
             <div class="form-group">
                 <label for="num_escritura" class="col-md-3 control-label">N&uacute;mero de Escritura</label>
               <div class="col-md-3">
-                  <?php echo form_input("intermediario[num_escritura]", $intermediario['num_escritura']," id='num_escritura' class='form-control'" )?>            
+                  <?php echo form_input("intermediario[num_escritura]", $intermediario['num_escritura']," id='num_escritura' class='form-control'" )?>
               </div>
             </div>
             <div class="form-group">

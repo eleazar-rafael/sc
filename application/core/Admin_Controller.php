@@ -9,11 +9,13 @@ class Admin_Controller extends MY_Controller
         //$this->layout->setLayout("app/layout_default");
         $this->layout->setLayout("app/layout_fastcredit");
         
-        $this->data['arrUser'] =  $this->session->userdata("arrUser");
-        if(!$this->data['arrUser']) redirect("app/index");
+        $this->data['arrUser'] =  $_SESSION['UserArray']; //$this->session->userdata("arrUser");        
+        if(!$this->data['arrUser']) 
+            header ("Location: ".  base_url()."../fastcredit");
+             //redirect("app/index"); 
         
         $this->load->model("catalogo_model");
-        
+        //pre($this->data['arrUser'], "--ARR USER--");
         //WARNING Y SUCCESS
         $this->data['error_warning'] = "";        
         $this->data['success'] = "";

@@ -13,10 +13,10 @@ class producto extends Admin_Controller{
         $this->load->model("producto_model");     
     }
     
-    public function index(){
+    public function index($page=0){
         if($_POST['filter']) set_filter ($this->lista, $_POST['filter']);
         if($_GET['sort']) set_sort($this->lista, $_GET['sort'], $_GET['order']);
-        //set_page($this->lista,$page);
+        set_page($this->lista,$page);
         
         $this->getlist();
     }

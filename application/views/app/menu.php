@@ -21,9 +21,11 @@
 <div class="header " ><?php //navbar navbar-fixed-top?>
     <div class="pull-left">
         <img class="logo" src="<?php echo base_url()?>public/images/logo_supplycredit.png" width="200" height="56" />
+        <a href="<?php echo base_url()."../fastcredit/"?>">[v1]</a>
     </div>    
     <div class="menu-user pull-right">
-        <?php echo anchor("app/logout","Salir del sistema")?>
+        <a href="javascript:confirmacion_salida()">Salir del sistema</a>
+        <?php //echo anchor("app/logout","")?>
     </div>
     <div style="clear:both;"></div>
 </div>
@@ -44,9 +46,9 @@
     <span class="sp_opcion">[Administraci&oacute;n]</span>&nbsp;
     <?php echo anchor("cat/fondeador/index", "Fondeador")?>&nbsp; | &nbsp;
     <?php echo anchor("cat/intermediario/index", "Intermediario")?>&nbsp; | &nbsp;
-    <?php echo anchor("cat/sucursal/index", "Sucursal")?>&nbsp; | &nbsp;
-    <?php echo anchor("cat/vendedor/index", "Vendedor")?>&nbsp; | &nbsp;
     <?php echo anchor("cat/canal/index", "Canal")?>&nbsp; | &nbsp;
+    <?php echo anchor("cat/sucursal/index", "Sucursal")?>&nbsp; | &nbsp;
+    <?php echo anchor("cat/vendedor/index", "Vendedor")?>&nbsp; | &nbsp;    
     <?php echo anchor("cat/convenio/index", "Convenio")?>&nbsp; | &nbsp;
     <?php echo anchor("cat/producto/index", "Producto")?>
     
@@ -63,7 +65,10 @@
     <span class="sp_opcion">[Contratos]</span>
 </div>
 <div class="menu" id="menu_4" style="<?php if($this->opmenu <> 4) echo "display:none" ?>">
-    <span class="sp_opcion">[Reportes]</span>
+    <span class="sp_opcion">[Reportes]</span>&nbsp;
+    <?php echo anchor("rep/contraprestacion/index", "Contraprestaci&oacute;n y cobranza")?>&nbsp; | &nbsp;
+    
+    
 </div>
 <div class="menu" id="menu_5" style="<?php if($this->opmenu <> 5) echo "display:none" ?>">
     <span class="sp_opcion">[Cobranza]</span>
@@ -81,5 +86,12 @@
         $("#menu_"+op).show();
         $(".btn_menu").removeClass("active_menu");
         $("#opcion_"+op).addClass("active_menu");
+    }
+    
+    function confirmacion_salida() {
+	var answer = confirm("Salir del sistema?")
+	if (answer){		
+            location = "<?php echo base_url()?>../fastcredit/logout.php";
+	}	
     }
 </script>

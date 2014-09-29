@@ -66,7 +66,7 @@ class canal_model extends MY_Model{
         }else{
             $sql .= "order by c.id asc";
         }
-            
+            //echo $sql;
         $query = $this->db->query($sql);
         return $query->result_array();             
     }

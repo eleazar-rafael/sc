@@ -20,10 +20,16 @@ $(function() {
             </ul>
             <div id="tabs-1">
                 <div class="form-group">
-                  <label for="nombre" class="col-md-3 control-label">Nombre</label>
+                  <label for="nombre" class="col-md-3 control-label">Nombre de la sucursal</label>
                   <div class="col-md-5">
                       <?php echo form_input("sucursal[nombre]", $sucursal['nombre']," id='nombre' class='form-control'" )?>            
                   </div>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion" class="col-md-3 control-label">Descripci&oacute;n de la sucursal</label>
+                    <div class="col-md-8">
+                        <?php echo form_input("sucursal[descripcion]",$sucursal['descripcion'], " id='descripcion'  class='form-control' ") ?>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="responsable" class="col-md-3 control-label">Responsable</label>

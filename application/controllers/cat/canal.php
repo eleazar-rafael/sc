@@ -18,7 +18,8 @@ class canal extends Admin_Controller{
         $this->load->model("archivo_model");
     }
     
-    public function index(){
+    public function index($page=0){
+        set_page($this->lista,$page);
         if($_POST['filter']) set_filter ($this->lista, $_POST['filter']);
         if($_GET['sort']) set_sort($this->lista, $_GET['sort'], $_GET['order']);
                 
@@ -155,7 +156,7 @@ class canal extends Admin_Controller{
                     
         //PAGINACION
         $this->data['total'] = $total = $this->canal_model->get_total();
-        $config = paginator_config($total,site_url("admin/canal/index"), 30);
+        $config = paginator_config($total,site_url("cat/canal/index"), 30);
         $this->pagination->initialize( $config );
         $this->data['links'] = "<div class='pagination'>".$this->pagination->create_links()."</div>";
         $data = array('limit' => $config['per_page'],'start'=> (int)$this->data['page']);
