@@ -10,4 +10,6 @@
 
 <?php //echo img(array('src'=>'public/images/logo_supplycredit_original.png'))?>
 
+<?php pre($_SESSION['UserArray'],'---UserArray----')?>
+
 

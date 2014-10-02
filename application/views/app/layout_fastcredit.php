@@ -41,8 +41,8 @@
 ?>
     
     <style>
-        
-        
+        div.pagination{padding:0 0 10px 10px;}
+        .pagination{margin:0px;}
     </style>    
     
 </head>

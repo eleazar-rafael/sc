@@ -88,9 +88,9 @@
     <?php endif;?>
     </tbody>
     </table>
-    <?php echo form_close();?>    
-    
+        
     <?php echo $links?>
+    <?php echo form_close();?>    
 </div>
 
 <script type="text/javascript"><!--
