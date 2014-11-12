@@ -2,10 +2,10 @@
 .contenido{width: 100%;}
 .principal{ border-bottom: solid 0px #c0c0c0; padding: 20px 10px;
             /*min-height:450px;height:expression(this.scrollHeight > 450 ? "auto":"450px");*/
-            height: 550px; vertical-align: top
+            height: auto; min-height: 550px; vertical-align: top
            }
 .lateral{width:250px; border-left: solid 1px #c0c0c0; border-bottom: solid 0px #c0c0c0;  vertical-align: top;background-color: #24466C;}
-.footer{background-color: #24466C; min-height: 50px; }
+.footer{background-color: #24466C; min-height: 60px; }
 
 
 /*.table thead th{background-color: #c3d9ff;}*/

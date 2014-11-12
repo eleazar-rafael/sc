@@ -31,43 +31,53 @@
     echo $script;
 ?>
     
+    <style>
+        .navbar{ margin-bottom: 0;   min-height: 0!important; background: #24466C}
+    </style>
+    
 </head>
 <body>        
     
-    <div role="" class="navbar navbar-fixed-top" style="">
-        <img style="padding: 5px; position: absolute" src="<?php echo base_url()?>public/images/logo_supplycredit_original.png" width="200"  /> 
-        <div style="height: 45px; background: #fff;">
-                
-            
-        </div>
+    
+    <div role="" class="" style="height: 120px;">
+        <img style="padding: 5px; position: absolute" src="<?php echo base_url()?>public/images/logo_supplycredit.png" width="200"  /> 
+        
+    </div> 
+    <div role="navigation" class="navbar navbar-inverse ">
       
-      <div class="container-fluid">
-          <?php /*
         <div class="navbar-header">
-          <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+          <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#" class="navbar-brand">Project name</a>
-        </div> */?>
+          <a href="#" class="navbar-brand">Bootstrap theme</a>
+        </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Inicio</a></li>
-            <li class="active"><a href="#">Clientes</a></li>
-            <li><a href="#">Administracion</a></li>
-            <li><a href="#">Contratos</a></li>
-            <li><a href="#">Reportes</a></li>
-            <li><a href="#">Cobranza</a></li>
-          </ul>          
-        </div>
-      </div> 
-        
-        <div class="menu" style="background-color: #24466C;color: #fff; height: 60px; ">
-            AQUI VA EL MENU
-        </div>
-    </div> 
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <span class="caret"></span></a>
+              <ul role="menu" class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      
+    </div>
+    
+    
+    
     
     <div class="container-fluid"  >
         <div class="row">        

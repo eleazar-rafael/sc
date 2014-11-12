@@ -63,7 +63,7 @@ class cliente_model extends MY_Model{
             $sql .= "order by ORDER BY LastName, LastNameTwo, FirstName, Id asc  ";
         }
             
-        
+        //echo $sql."<br>";
         $query = $this->db->query($sql);
         return $query->result_array();             
     }
@@ -83,7 +83,7 @@ class cliente_model extends MY_Model{
         if (!empty($filter['rfc'])) $sql .= " AND RFC LIKE '%" . $filter["rfc"] . "%'";
         if (!empty($filter['curp'])) $sql .= " AND CURP LIKE '%" . $filter["curp"] . "%'";      
         //if (!empty($filter['contrato'])) $sql .= " AND c.contrato LIKE '%" . $filter["contrato"] . "%'";
-        //echo $sql;
+        //echo $sql."<br>";
         $query = $this->db->query($sql);
         $row = $query->row_array();
 

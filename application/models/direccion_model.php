@@ -105,5 +105,53 @@ class direccion_model extends MY_Model{
     }
     
     
+    //--------------------------------------------------------------------------
+    //  CODIGOS POSTALES  - TABLA: cat_sepomex
+    //--------------------------------------------------------------------------
         
+    function cbo_sepomex_estado($opInicial=""){
+        $query = $this->db->query("select distinct c_estado, d_estado from cat_sepomex order by d_estado asc ");
+        if(trim($opInicial)) $info[] = $opInicial;
+        if($query->num_rows > 0){
+            foreach($query->result_array() as $row){
+                $info[$row['c_estado']] = $row['d_estado'];
+            }
+        }
+        return $info;
+    }
+    
+    function cbo_sepomex_municipio($estado=0, $opInicial=""){
+        $query = $this->db->query("select distinct c_mnpio, d_mnpio from cat_sepomex  where c_estado =".(int)$estado." order by d_mnpio asc ");
+        if(trim($opInicial)) $info[] = $opInicial;
+        if($query->num_rows > 0){
+            foreach($query->result_array() as $row){
+                $info[$row['c_mnpio']] = $row['d_mnpio'];
+            }
+        }
+        return $info;
+    }
+    
+    function cbo_sepomex_asentamiento($estado=0, $municipio=0, $opInicial=""){
+        $query = $this->db->query("select distinct id_asenta_cpcons, d_asenta from cat_sepomex 
+                                   where c_estado =".(int)$estado." and c_mnpio = ".(int)$municipio." 
+                                   order by d_asenta asc ");
+        if(trim($opInicial)) $info[] = $opInicial;
+        if($query->num_rows > 0){
+            foreach($query->result_array() as $row){
+                $info[$row['id_asenta_cpcons']] = $row['d_asenta'];
+            }
+        }
+        return $info;
+    }
+    
+    function get_sepomex_cp($estado="", $municipio="", $colonia=""){
+        $query = $this->db->query("select * from cat_sepomex 
+                                   where c_estado =".(int)$estado." and c_mnpio = ".(int)$municipio." 
+                                   and id_asenta_cpcons= ".(int)$colonia);
+        
+        return $query->row_array();
+        
+    }
+    
+    
 }

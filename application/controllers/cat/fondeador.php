@@ -89,6 +89,11 @@ class fondeador extends Admin_Controller{
         $this->data['fondeador'] = $this->fondeador_model->get_data( $this->input->get('id') );
         $this->data['direccion'] = $this->direccion_model->get_data( (int)$this->data['fondeador']['direccion_id'] );
         $this->data['contacto'] =  $this->contacto_model->get_data_por_tipo("cat_fondeador", (int)$this->data['fondeador']['id']);
+        
+        $dir = $this->data['direccion']; 
+        $this->data['cbo_estado'] = $this->direccion_model->cbo_sepomex_estado("--Seleccione--");
+        $this->data['cbo_municipio'] = $this->direccion_model->cbo_sepomex_municipio((int)$dir['estado'], "--Seleccione--");
+        $this->data['cbo_colonia'] = $this->direccion_model->cbo_sepomex_asentamiento((int)$dir['estado'], (int)$dir['municipio'], "--Seleccione--");
                 
         $tipo_contacto = 3;
         $this->data['tipo_contacto'] = $this->catalogo_model->get_cbo_catalogo($tipo_contacto);

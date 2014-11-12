@@ -100,4 +100,19 @@ class direccion_cliente extends Admin_Controller{
     function ajax_estado($pais){
         echo form_dropdown("direccion[State]", $this->catalogo_model->get_cbo_estado("--Seleccione--",$pais), 0," id='State' class='form-control'" );
     }
+    
+    function ajax_sepomex_municipio($estado){
+        echo form_dropdown("direccion[ciudad_delegacion]", $this->direccion_model->cbo_sepomex_municipio($estado, "--Seleccione--"), 0," id='ciudad_delegacion' class='form-control' onchange='btn_cbo_colonia(this.value)'" );
+    }
+    
+    function ajax_sepomex_colonia($estado, $municipio){
+        echo form_dropdown("direccion[colonia]", $this->direccion_model->cbo_sepomex_asentamiento($estado,$municipio, "--Seleccione--"), 0," id='colonia' class='form-control' onchange='btn_cbo_cp(this.value)' " );
+    }
+    
+    function ajax_sepomex_cp($estado, $municipio, $colonia){
+        $cp = $this->direccion_model->get_sepomex_cp($estado,$municipio, $colonia);
+        echo $cp['d_codigo'];
+    }
+    
+    
 }

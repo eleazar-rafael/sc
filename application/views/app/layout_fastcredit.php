@@ -51,28 +51,28 @@
         
         <?php $this->load->view("app/menu")?>
 
+        
+        <div class="principal">
+            <?php echo $layout_content?>
+        </div>
+        
+        
+        
+        <?php /*
         <table class="contenido">
         <tr>
             <?php  //CONTENIDO PRINCIPAL?>
             <td class="principal">
-            <?php if ($error_warning): ?>
-                <p class="well-sm bg-danger text-warning" ><span class="glyphicon glyphicon-warning-sign"></span>&nbsp; <?php echo $error_warning; ?>
-                    <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                </p>                
-            <?php endif ?>
-            <?php if ($success): ?>
-                <p class="well-sm bg-success text-success"><span class="glyphicon glyphicon-ok"></span>&nbsp; <?php echo $success; ?>
-                    <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                </p>
-            <?php endif; ?>
+            
                 
-                <?php echo $layout_content?>            
+                <?php echo $layout_content?>
                 
             </td>
-            <?php //BARRA LATERAL?>
+            <?php  //BARRA LATERAL?>
             <td class="lateral"><?php $this->load->view("app/lateral")?></td>
+            
         </tr>
-        </table>
+        </table>*/?>
         <div class="footer">
             <?php $this->load->view("app/footer")?>
         </div>

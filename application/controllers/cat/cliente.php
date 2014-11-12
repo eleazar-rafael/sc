@@ -24,16 +24,17 @@ class cliente extends Admin_Controller{
         
     }
     
-    public function index(){
-        /*if($_POST['filter']) set_filter ($this->lista, $_POST['filter']);
+    public function index($page=0){
+         set_page($this->lista,$page);
+        if($_POST['filter']) set_filter ($this->lista, $_POST['filter']);
         if($_GET['sort']) set_sort($this->lista, $_GET['sort'], $_GET['order']);
-        set_page($this->lista,$page);*/        
+        
         $this->layout->view('cat/cliente/index', $this->data);        
     }
     
     
-    public function search(){
-        
+    public function search($page=0){
+        set_page($this->lista,$page);
         if($_POST['filter']) set_filter ($this->lista, $_POST['filter']);
         if($_GET['sort']) set_sort($this->lista, $_GET['sort'], $_GET['order']);
         
